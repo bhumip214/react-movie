@@ -6,7 +6,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies: []
+      movies: [],
+      searchInput: ""
     };
   }
 
@@ -23,10 +24,22 @@ class App extends React.Component {
       });
   }
 
+  handleChanges = e => {
+    this.setState({ searchInput: e.target.value });
+  };
+
   render() {
     return (
       <div className="App">
         <h1> Movies</h1>
+        <div>
+          <input
+            type="text"
+            name="searchBar"
+            placeholder="Search"
+            onChange={this.handleChanges}
+          />
+        </div>
         <Movies movies={this.state.movies} />
       </div>
     );
